@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -45,7 +46,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public AccountDTO create(@RequestBody AccountDTO dto) {
+    public AccountDTO create(@Valid @RequestBody AccountDTO dto) {
         return service.create(dto);
     }
 
@@ -93,7 +94,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public AccountDTO findById(@PathVariable(value = "id") Long id) {
+    public AccountDTO findById(@Valid @PathVariable(value = "id") Long id) {
         return service.findById(id);
     }
 
@@ -115,7 +116,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public AccountDTO update(@RequestBody AccountDTO dto) {
+    public AccountDTO update(@Valid @RequestBody AccountDTO dto) {
         return service.update(dto);
     }
 
@@ -129,7 +130,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public AccountDTO updateByStatus(@PathVariable(value = "id") Long id, @PathVariable(value = "status") String status) {
+    public AccountDTO updateByStatus(@Valid @PathVariable(value = "id") Long id, @PathVariable(value = "status") String status) {
         service.updateByStatus(id, status);
         return  service.updateByStatus(id, status);
     }
@@ -145,7 +146,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<?> delete(@Valid @PathVariable(value = "id") Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
@@ -168,7 +169,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public ResponseEntity<PagedModel<EntityModel<AccountDTO>>> findByDueDateAndDescription(@RequestBody AccountPayableDTO accountPayableDTO,
+    public ResponseEntity<PagedModel<EntityModel<AccountDTO>>> findByDueDateAndDescription(@Valid @RequestBody AccountPayableDTO accountPayableDTO,
                                                                                            @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                                            @RequestParam(value = "size", defaultValue = "12") Integer size,
                                                                                            @RequestParam(value = "direction", defaultValue = "asc") String direction) {
@@ -196,7 +197,7 @@ public class AccountController {
                     @ApiResponse(description = "Internal Server Error", responseCode = "500", content = {@Content})
             }
     )
-    public ResponseEntity<PagedModel<EntityModel<AccountSummaryDTO>>> findTotalValueByPeriod(@RequestParam(value = "page", defaultValue = "0") Integer page,
+    public ResponseEntity<PagedModel<EntityModel<AccountSummaryDTO>>> findTotalValueByPeriod(@Valid @RequestParam(value = "page", defaultValue = "0") Integer page,
                                                                                                  @RequestParam(value = "size", defaultValue = "12") Integer size,
                                                                                                  @RequestParam(value = "direction", defaultValue = "asc") String direction) {
         var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;

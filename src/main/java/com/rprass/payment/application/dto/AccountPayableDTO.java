@@ -1,5 +1,7 @@
 package com.rprass.payment.application.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -15,6 +17,9 @@ public class AccountPayableDTO extends RepresentationModel<AccountPayableDTO> im
 
     private static final long serialVersionUID = 1L;
 
+    @NotNull(message = "The due date cannot be null")
     private Date dueDate;
+
+    @NotBlank(message = "he description cannot be blank")
     private String description;
 }

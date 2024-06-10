@@ -25,17 +25,17 @@ public class AccountDTO extends RepresentationModel<AccountDTO> implements Seria
     @JsonProperty("id")
     private Long key;
 
-    @NotNull(message = "message.account.dueDate.null")
+    @NotNull(message = "The due date cannot be null")
     private Date dueDate;
 
     private Date paymentDate;
 
-    @NotNull(message = "message.account.value.null")
+    @NotNull(message = "he value cannot be null")
     private BigDecimal value;
 
-    @NotBlank(message = "message.account.description.null")
+    @NotBlank(message = "he description cannot be blank")
     private String description;
 
-    @NotNull(message = "message.account.status.null")
+    @NotNull(message = "The status cannot be null")
     private Status status;
 }

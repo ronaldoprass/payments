@@ -1,5 +1,7 @@
 package com.rprass.payment.application.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -15,6 +17,9 @@ public class AccountSummaryDTO extends RepresentationModel<AccountSummaryDTO> im
 
     private static final long serialVersionUID = 1L;
 
+    @NotBlank(message = "he period cannot be blank")
     private String period;
+
+    @NotNull(message = "he totalValue cannot be null")
     private BigDecimal totalValue;
 }
