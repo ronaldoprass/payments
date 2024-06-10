@@ -22,7 +22,7 @@ public class AuthControllerJsonTests extends AbstractIntegrationTest {
     @DisplayName("Deve autenticar um usuário com sucesso")
     @Order(1)
     public void testSignin() throws JsonProcessingException {
-        AccountCredentialsVO user = new AccountCredentialsVO("leandro","admin123");
+        AccountCredentialsVO user = new AccountCredentialsVO("ronaldo","admin123");
         tokenVO =
                 given()
                         .basePath("/auth/signin")
@@ -46,7 +46,7 @@ public class AuthControllerJsonTests extends AbstractIntegrationTest {
     @DisplayName("Deve atualizar o token de um usuário com sucesso")
     @Order(2)
     public void testRefreshToken() throws JsonProcessingException {
-        AccountCredentialsVO user = new AccountCredentialsVO("leandro","admin123");
+        AccountCredentialsVO user = new AccountCredentialsVO("ronaldo","admin123");
         var newTokenVO =
                 given()
                         .basePath("/auth/refresh")

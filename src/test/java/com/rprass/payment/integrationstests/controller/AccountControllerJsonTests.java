@@ -45,7 +45,7 @@ public class AccountControllerJsonTests extends AbstractIntegrationTest {
     @DisplayName("Should authenticate a user successfully")
     @Order(0)
     public void authorization() throws JsonProcessingException {
-        AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
+        AccountCredentialsVO user = new AccountCredentialsVO("ronaldo", "admin123");
         var accessToken = given()
                 .basePath("/auth/signin")
                 .port(TestConfigs.SERVER_PORT)
