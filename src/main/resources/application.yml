@@ -1,0 +1,35 @@
+cors:
+  originPatterns: http://localhost:8080,https://localhost:8080,http://localhost:3000
+file:
+  upload-dir: ${UPLOAD_DIR:/media/urutau/fonts/payments/upload}
+security:
+  jwt:
+    token:
+      secret-key: 53cr37
+      expire-length: 36000000
+spring:
+  application:
+    name: MS-Payments
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pagamentos?currentSchema=public
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+springdoc:
+  pathsToMatch:
+    - /auth/**
+    - /api/**/v1/**
+  swagger-ui:
+    use-root-path: true
